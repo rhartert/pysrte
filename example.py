@@ -2,9 +2,6 @@ import random
 
 import srte
 
-demands_file = "data/synth100.demands"
-network_file = "data/synth100.graph"
-
 
 def parse(demand_file, network_file) -> srte.Instance:
     inst = srte.Instance()
@@ -40,6 +37,9 @@ def parse(demand_file, network_file) -> srte.Instance:
     return inst
 
 
+demands_file = "data/synth100.demands"
+network_file = "data/synth100.graph"
+
 inst = parse(demands_file, network_file)
 cfg = srte.Config(alpha=8.0, beta=4.0, max_nodes=2)
 lgs = srte.LgsSolver(inst, cfg)
@@ -53,7 +53,7 @@ for iter in range(10000):
         e = lgs.select_edge(random.random())
 
     d = lgs.select_demand(e, random.random())
-    if d == -1:
+    if not d:
         continue
 
     move = lgs.search(e, d, lgs.max_utilization())
