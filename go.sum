@@ -1,6 +1,6 @@
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/rhartert/srte-ls v0.0.0 h1:5gxhzWPbQIqKQUWR2YJWB8hsxMBfftV59qW1OVt6Bmo=
-github.com/rhartert/srte-ls v0.0.0/go.mod h1:WKRBcWMdepA4b4GQOqGO1TBc+JMBiKq6MhWqFQqwoMY=
+github.com/rhartert/srte-ls v0.0.1 h1:IIS00qFxxTdQA+gvHqqfw6pklIhgHybujqT5yD0iLD0=
+github.com/rhartert/srte-ls v0.0.1/go.mod h1:WKRBcWMdepA4b4GQOqGO1TBc+JMBiKq6MhWqFQqwoMY=
 github.com/rhartert/yagh v0.3.0 h1:N1t7+27FLnlADw3GAOWc+v5nc0+IBaLlWVnUxG+oLaU=
 github.com/rhartert/yagh v0.3.0/go.mod h1:INOoPnLEKdV3MwE3mRvQS/iH0xVpNTYKM/UBYPYiQUA=

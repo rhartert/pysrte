@@ -117,3 +117,9 @@ class LgsSolver:
     def select_demand(self, edge: int, r: float) -> int:
         d = int(c_lib.selectDemand(self._id, c_int32(edge), c_double(r)))
         return d if d >= 0 else None
+
+    def edge_load(self, edge: int) -> int:
+        return int(c_lib.edgeLoad(self._id, edge))
+
+    def edge_util(self, edge: int) -> float:
+        return float(c_lib.edge_utilization(self._id, c_int32(edge)))

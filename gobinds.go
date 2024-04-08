@@ -220,4 +220,16 @@ func selectDemand(sid C.ulong, edge C.int, r C.double) C.int {
 	return C.int(s.SelectDemand(int(edge), float64(r)))
 }
 
+//export edgeLoad
+func edgeLoad(sid C.ulong, edge C.int) C.long {
+	s := solvers[solverID(sid)]
+	return C.long(s.State.Load(int(edge)))
+}
+
+//export edgeUtilization
+func edgeUtilization(sid C.ulong, edge C.int) C.double {
+	s := solvers[solverID(sid)]
+	return C.double(s.State.Utilization(int(edge)))
+}
+
 func main() {}
