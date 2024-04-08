@@ -41,7 +41,10 @@ import (
 
 type instanceID = uint64
 
-var instances = map[instanceID]*instance{}
+var (
+	instances      = map[instanceID]*instance{}
+	nextInstanceID = 0
+)
 
 type edge struct {
 	src    int
@@ -63,7 +66,9 @@ type instance struct {
 
 //export newInstance
 func newInstance() C.ulong {
-	iid := instanceID(42)
+	iid := instanceID(nextInstanceID)
+	nextInstanceID++
+
 	instances[iid] = &instance{}
 	return C.ulong(iid)
 }
@@ -105,7 +110,10 @@ func printInstance(iid C.ulong) {
 
 type solverID = uint64
 
-var solvers = map[solverID]*solver.LinkGuidedSolver{}
+var (
+	solvers      = map[solverID]*solver.LinkGuidedSolver{}
+	nextSolverID = 0
+)
 
 //export newSolver
 func newSolver(iid C.ulong, cfg C.struct_Config) C.ulong {
@@ -148,7 +156,9 @@ func newSolver(iid C.ulong, cfg C.struct_Config) C.ulong {
 		LinkCapacities: capacities,
 	})
 
-	sid := solverID(len(solvers))
+	sid := solverID(nextSolverID)
+	nextSolverID++
+
 	s := solver.NewLinkGuidedSolver(state, solver.Config{
 		Alpha: float64(cfg.alpha),
 		Beta:  float64(cfg.beta),
