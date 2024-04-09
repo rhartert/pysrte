@@ -1,4 +1,5 @@
 import random
+import time
 
 import srte
 
@@ -45,12 +46,22 @@ cfg = srte.Config(alpha=8.0, beta=4.0, max_nodes=2)
 lgs = srte.LgsSolver(inst, cfg)
 random.seed(42)
 
+# Indicate whether the previous iteration found a move and applied it.
+moved_applied = True
+
+tic = time.time()
 init_util = lgs.max_utilization()
+
 for iter in range(10000):
-    if iter <= 1000:
+    # If the last iteration was succesfull, focus on reducing the load of one
+    # the most utilized edges. Otherwise, diversify the search by selecting an
+    # edge randomly.
+    if moved_applied:
         e = lgs.max_utilized_edge()
     else:
         e = lgs.select_edge(random.random())
+
+    moved_applied = False
 
     d = lgs.select_demand(e, random.random())
     if not d:
@@ -60,7 +71,11 @@ for iter in range(10000):
     if not move:
         continue
 
+    moved_applied = True
     lgs.apply_move(move)
 
-print(f"utilization (before): {init_util}")
-print(f"utilization (after):  {lgs.max_utilization()}")
+toc = time.time()
+
+print(f"optimization time (s): {toc-tic}")
+print(f"utilization (before):  {init_util}")
+print(f"utilization (after):   {lgs.max_utilization()}")
