@@ -53,7 +53,7 @@ tic = time.time()
 init_util = lgs.max_utilization()
 
 for iter in range(10000):
-    # If the last iteration was succesfull, focus on reducing the load of one
+    # If the last iteration was successful, focus on reducing the load of one
     # the most utilized edges. Otherwise, diversify the search by selecting an
     # edge randomly.
     if moved_applied:
