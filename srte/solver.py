@@ -122,4 +122,4 @@ class LgsSolver:
         return int(c_lib.edgeLoad(self._id, edge))
 
     def edge_util(self, edge: int) -> float:
-        return float(c_lib.edge_utilization(self._id, c_int32(edge)))
+        return float(c_lib.edgeUtilization(self._id, c_int32(edge)))

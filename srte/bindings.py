@@ -50,5 +50,5 @@ c_lib.mostUtilizedEdge.restype = c_int32
 c_lib.search.restype = C_Move
 c_lib.selectEdge.restype = c_int32
 c_lib.selectDemand.restype = c_int32
-c_lib.edge_load.restype = c_int64
-c_lib.edge_util.restype = c_double
+c_lib.edgeLoad.restype = c_int64
+c_lib.edgeUtilization.restype = c_double
